@@ -1,0 +1,84 @@
+:root {
+    color-scheme: light;
+    --ink: #252533;
+    --sub: #5d5f70;
+    --line: #dddde6;
+    --soft: #f5f5f8;
+    --accent: #4e47a1;
+    --pale: #ededf9;
+    font: 15px/1.65 -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: var(--ink);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; display: grid; grid-template-columns: 236px minmax(0, 1fr); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+:focus-visible { outline: 3px solid #827acb; outline-offset: 3px; }
+.skip { position: fixed; top: 0; left: 12px; padding: 10px; transform: translateY(-120%); background: white; }
+.skip:focus { transform: none; z-index: 2; }
+
+aside { position: sticky; top: 0; height: 100vh; padding: 24px 16px; background: var(--soft); border-right: 1px solid var(--line); }
+.brand { display: flex; align-items: center; gap: 11px; padding: 0 8px; color: var(--ink); font-size: 19px; font-weight: 700; }
+.brand span { position: relative; width: 24px; height: 16px; border-radius: 3px; background: var(--accent); }
+.brand span::before { content: ""; position: absolute; inset: -5px 0 auto; height: 5px; background: repeating-linear-gradient(125deg, var(--accent) 0 5px, var(--pale) 5px 8px); transform: rotate(-12deg); transform-origin: left; }
+nav { display: grid; gap: 5px; margin-top: 24px; }
+nav a { padding: 8px; border-radius: 5px; color: var(--ink); }
+nav a:hover { background: var(--pale); color: var(--accent); }
+
+main { width: min(1050px, 100%); margin-inline: auto; padding: 37px clamp(17px, 5vw, 66px) 70px; }
+h1, h2, h3, h4, p, figure { margin: 0; }
+h1 { font-size: 17px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+h2 { font-size: clamp(30px, 5vw, 48px); line-height: 1.2; letter-spacing: -.035em; }
+h3 { font-size: 22px; margin: 30px 0 12px; }
+h4 { font-size: 16px; }
+h4 small { color: var(--sub); margin-left: 8px; white-space: nowrap; }
+.case { padding: 24px 0 52px; border-bottom: 1px solid var(--line); }
+.case-heading { display: grid; align-content: center; gap: 8px; }
+.case-heading p, figcaption, small, dt, summary span { color: var(--sub); }
+.screening {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 210px);
+    gap: 24px;
+    padding: clamp(16px, 4vw, 34px);
+    background: var(--soft);
+    border-radius: 12px;
+}
+.film video { display: block; width: 100%; aspect-ratio: 9 / 16; background: #22222f; border-radius: 6px; }
+.film figcaption { margin-top: 5px; }
+figcaption { font-size: 13px; }
+figcaption small { display: block; }
+.candidate { padding: 15px 0; border-bottom: 1px solid var(--line); }
+.photos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(130px, 100%), 1fr)); gap: 10px; margin-top: 9px; }
+.photos img, .shot img { display: block; width: 100%; height: auto; background: var(--soft); border-radius: 5px; }
+.photos img { aspect-ratio: 4 / 3; object-fit: contain; }
+.selected { max-width: 590px; }
+.direction, .shot { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.direction { padding: 15px; background: var(--soft); border-radius: 8px; }
+.shot { grid-template-columns: minmax(100px, 180px) minmax(0, 1fr); padding: 17px 0; border-bottom: 1px solid var(--line); align-items: start; }
+.shot h4 { margin-bottom: 8px; }
+.shot img { aspect-ratio: 9 / 16; object-fit: cover; }
+.trace { margin: 15px 0 7px; border: 1px solid var(--line); border-radius: 7px; padding: 10px 14px; }
+summary { cursor: pointer; overflow-wrap: anywhere; }
+summary span { display: inline-block; margin-left: 5px; font-size: 13px; }
+.trace ol { margin: 7px 0; padding-left: 27px; }
+.trace li { padding: 5px 0; border-top: 1px solid var(--line); }
+.trace p { padding: 3px 0 0 16px; }
+dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 3px 10px; margin: 0; }
+dd { margin: 0; overflow-wrap: anywhere; }
+ul { padding-left: 19px; margin: 4px 0 9px; }
+
+@media (max-width: 770px) {
+    body { display: block; }
+    aside { position: static; height: auto; padding: 14px; border-right: 0; border-bottom: 1px solid var(--line); }
+    nav { margin-top: 9px; display: flex; gap: 2px; flex-wrap: wrap; }
+    main { padding-top: 15px; }
+}
+
+@media (max-width: 460px) {
+    .screening { grid-template-columns: 1fr; gap: 13px; }
+    .film { width: min(100%, 240px); margin-inline: auto; }
+    .direction { grid-template-columns: 1fr; gap: 10px; }
+    .shot { grid-template-columns: 1fr; }
+    .shot img { max-width: 168px; }
+}
